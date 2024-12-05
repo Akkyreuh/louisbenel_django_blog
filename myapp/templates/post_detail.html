@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<h2>Commentaires :</h2>
+<ul>
+    {% for comment in comments %}
+    <li>
+        {{ comment.author }}: {{ comment.text }} (<a href="{% url 'edit_comment' comment.id %}">Edit</a> | 
+        <a href="{% url 'delete_comment' comment.id %}">Supprimer</a>)
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_comment' post.id %}">Ajouter un commentaire</a> | 
+<a href="{% url 'list_posts' %}">Retour</a>
+{% endblock %}

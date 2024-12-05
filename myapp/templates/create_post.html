@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+<h1>Créer un poste</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="title">Titre :</label>
+    <input type="text" id="title" name="title" placeholder="Title"><br>
+    <label for="author">Auteur :</label>
+    <input type="text" id="author" name="author" placeholder="Author"><br>
+    <label for="content">Contenu :</label>
+    <textarea id="content" name="content" placeholder="Content"></textarea><br>
+    <button type="submit">Enregistrer</button>
+    <a href="{% url 'list_posts' %}">Annuler</a>
+</form>
+{% endblock %}
